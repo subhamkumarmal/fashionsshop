@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shopapp/css/login.css' %}">
+</head>
+<body>
+
+<header>
+
+  <nav>
+
+        <div class="logo-head">
+            <div>
+                    <img class="logo" src="{% static 'shopapp/images/logo.jpg' %}">
+            </div>
+            <div>
+                     <p class="fashion">fashion</p>
+            </div>
+        </div>
+
+        <div class="linklist">
+                    <ul>
+                        <li><a href="#">contact</a></li>
+                        <li><a href="#">info</a></li>
+                        <li><a href="/logreg/1">login</a></li>
+                    </ul>
+        </div>
+    </nav>
+
+{% if params %}
+    <!----------------- Register Area ----------------------->
+<div>
+    <div class="main-login" >
+        <div class="inside-loging">
+    <form method="post">
+    {% csrf_token %}
+        <label>Name </label><span class="start">*</span>
+    <input type="text" name="name"><br>
+        <label>Email</label><span class="start">*</span>
+    <input type="email" name="email"><br>
+        <label>Password</label><span class="start">*</span>
+    <input type="password" name="password"><br>
+        <label>Confirm Passwords</label><span class="start">*</span>
+    <input type="password"  name="cpassword"><br>
+    <input type="submit" class="input-submit" value="submit">
+</form>
+<button class="btn-log btn-common"><a href="/logreg/1">Login</a></button> <button class="btn-reg btn-common"><a href="/logreg/2">Register</a></button>
+    </div>
+</div>
+</div>
+    {% else %}
+   <!--------------------- login area ------------------------>
+   <div class="main-login" >
+        <div class="inside-loging">
+            <p id="login-head">Login</p>
+        <form method="post">
+  {% csrf_token %}
+  <label>Email</label><span>*</span>
+  <input type="email" name="email" required><br>
+  <label>Password</label><span>*</span>
+  <input type="password" name="password" required><br>
+  <input type="submit" class="input-submit" value="submit">
+</form><span id="check"></span>
+            <button class="btn-log btn-common"><a href="/logreg/1">Login</a></button> <button class="btn-reg btn-common"><a href="/logreg/2">Register</a></button>
+        </div>
+    </div>
+    {% endif %}
+    </header>
+</body>
+<script src="{% static 'shopapp/js/login.js' %}"></script>
+</html>

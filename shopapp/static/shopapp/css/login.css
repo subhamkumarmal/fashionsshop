@@ -1,0 +1,157 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    height: 100vh;
+}
+
+/*------------------------------- NAV CSS ---------------------------------*/
+nav{
+
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(10, 10, 10, 0.75);
+    position: sticky;
+    /*margin-bottom: 10px;*/
+    line-height: 25px;
+    top: 0px;
+    z-index: 1;
+
+
+
+
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    /*position: fixed;*/
+
+}
+
+.fashion{
+    color: white;
+    text-transform: uppercase;
+}
+
+nav .logo-head{
+    width:15%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+
+}
+
+nav .linklist{
+    width:20%;
+    padding-right: 20px;
+}
+nav .linklist ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+
+}
+
+nav .linklist ul li a{
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    transition: .5s linear;
+}
+
+nav .linklist ul li a:hover{
+    color: deeppink;
+    border-bottom: 1px solid white;
+    font-size: 15px;
+}
+
+/*--------------------------------- Register css ------------------------*/
+.main-login{
+    display: grid;
+    place-items: center;
+    margin-top: 5rem;
+}
+
+.inside-loging{
+    /*text-align: center;*/
+    /*margin-top: 8rem;*/
+    width: 300px;
+    height: 380px;
+    margin-top: 0;
+    box-shadow: 0 2px 4px black;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+input{
+    width:250px;
+    height: 20px;
+    border-radius: 10px;
+    outline: 0;
+    margin-bottom: 5px;
+
+}
+
+.start{
+    color: red;
+}
+
+.input-submit{
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    outline: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.51);
+    transition: .5s linear;
+    color: white;
+    text-transform: uppercase;
+}
+
+#input-submit:hover{
+    background-color: transparent;
+    border:2px solid black;
+    color: green;
+}
+
+.btn-common{
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+
+}
+
+
+.btn-common a{
+    text-decoration: none;
+    color:black;
+}
+
+/*------------------------------- Login Css ------------------------*/
+
+#login-head{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-decoration: underline;
+
+}
+
+.active{
+    background-color: orange;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+}

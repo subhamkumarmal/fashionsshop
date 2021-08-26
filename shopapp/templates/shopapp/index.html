@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'shopapp/css/index.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+<body>
+<header>
+
+    <!----------------------- NAV BAR ----------------------------->
+
+    <nav>
+
+        <div class="logo-head">
+            <div>
+                    <img class="logo" src="{% static 'shopapp/images/logo.jpg' %}">
+            </div>
+            <div>
+                     <p class="fashion">fashion</p>
+            </div>
+        </div>
+
+        <div class="linklist">
+                    <ul>
+                        <li><a href="#">contact</a></li>
+                        <li><a href="#">info</a></li>
+                        <li><a href="/logreg/1">login</a></li>
+                    </ul>
+        </div>
+    </nav>
+
+        <!----------------------- SHOP CARD ----------------------------->
+
+    <div class="container card-container col-8 ">
+         <div class="shop-card row" >
+             <div class="para col-md-8 ">
+                      <p>We all know the good feeling that goes along with walking out of a store with a new shade of lipstick or after ordering a killer pair of boots online. They call it retail therapy for a reason and more than one scientific study has backed up its effectiveness. Bottom line: when you are stressed out or having a rough day and if you can afford it, scouring Anthropologie for that perfect top can actually help boost your mood.</p>
+             </div>
+                         <div id="carouselExampleSlidesOnly" class="carousel slide col-md-4 " data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="caroselid" src="{% static 'shopapp/images/s1.jpg' %}" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img class="caroselid" src="{% static 'shopapp/images/s2.jpg' %}" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img class="caroselid" src="{% static 'shopapp/images/s3.jpg' %}"  alt="...">
+    </div>
+  </div>
+</div>
+             </div>
+         </div>
+    </div>
+
+            <!----------------------- list of shop  ----------------------------->
+    {% if sobj %}
+    <div class="container insert-shirt-container col-10">
+        <div class="row my-5">
+            {% for i in sobj %}
+            <div class="col-md-3">
+                <img class="insert-shirt-images" src="/media/{{i.shirt_img}}" alt="...">
+                <div>
+                    <span class="shirt-info">{{i.shirt_name}}</span><br>
+                    <span class="shirt-info">{{i.shirt_price}} <span class='rs'>Rs/-</span></span><br>
+                    <span class="shirt-info">{{i.shirt_description}}</span><br>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+    {% else %}
+    <h3>Shirt Is Empty Here</h3>
+    {% endif %}
+
+</header>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</html>
