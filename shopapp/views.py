@@ -67,4 +67,8 @@ def LoginRegister(request,pk):
 #
 
 
+def CheckOutView(request):
+   return render(request,'shopapp/checkout.html')
+
+
 

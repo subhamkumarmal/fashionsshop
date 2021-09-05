@@ -1,8 +1,15 @@
 
 
 $(document).ready(function (){
-    $('.btn-class-addtocart').on('click',function (){
 
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+   return new bootstrap.Popover(popoverTriggerEl,{html: true})
+        // return new bootstrap.Popover(popoverTriggerEl)
+})
+
+    $(`.spans`).on('click','button.btn-class-addtocart',function (){
+        console.log('clickeddd')
         console.log(this.id)
         no=this.id.toString()
         name=document.getElementById(`sn${no}`).innerHTML
@@ -44,12 +51,24 @@ $(document).ready(function (){
         }
 
 
-            $('.plush').on('click',function (){
+     $(`#p${this.id}`).on('click',function (){
+
     // console.log(this.id)
     pid=this.id.toString()[1]
     cart=JSON.parse(sessionStorage.getItem('cart'))
     plushupdate(pid)
     document.getElementById(`c${pid}`).innerHTML=cart[pid].count
+       })
+
+
+        $(`#m${this.id}`).on('click',function (){
+
+    // console.log(this.id)
+    pid=this.id.toString()[1]
+    cart=JSON.parse(sessionStorage.getItem('cart'))
+    minusupdate(pid)
+            if(cart[pid]!=undefined)
+             document.getElementById(`c${pid}`).innerHTML=cart[pid].count
        })
 
     })
@@ -59,10 +78,11 @@ $(document).ready(function (){
 
 })
 
+
 buttonupdate=(id)=>{
     // console.log("buton",id)
     cart=JSON.parse(sessionStorage.getItem('cart'))
-    document.getElementById(`span${id}`).innerHTML=`<button id="p${id}" class="plush" >+</button><span id="c${id}">${cart[id].count}</span><button id="m${id}" class="munish" >-</button>`
+    document.getElementById(`span${id}`).innerHTML=`<button id="p${id}" class="plush pm_commonclass"  >+</button><span id="c${id}" class="nospane">${cart[id].count}</span><button id="m${id}" class="munish pm_commonclass" >-</button>`
 }
 
 
@@ -71,20 +91,51 @@ cartupdata=()=>{
     total=0
     cart=JSON.parse(sessionStorage.getItem('cart'))
     // console.log(Object.keys(cart).length) to get the length of a dictionery in terms of keys
+    lst='<div class="unorderlist">'
     for( var i in cart){
         total=total+cart[i].count
+        lst=lst+`${cart[i].name}--${cart[i].count}<br>`
     }
+    lst=lst+`</div>`
+
     document.getElementById('cart-no').innerHTML=total.toString()
+    document.getElementById('list-cart').setAttribute('data-bs-content',lst+"<div class='buttons my-2'><span class='checkout'><a href='/checkout' onclick='fun()'>check</a></span> <span class='checkout'><a href='#'>clear</a></span></div>");
 
 
 }
 
 plushupdate=(id)=>{
+
+
     cart=JSON.parse(sessionStorage.getItem('cart'))
     cart[id].count=(cart[id].count)+1
+    console.log(`here is the count ${id}`,cart[id].count)
     sessionStorage.setItem('cart',JSON.stringify(cart))
-    // cartupdata()
+    cartupdata()
 }
 
+minusupdate=(id)=>{
 
+    cart=JSON.parse(sessionStorage.getItem('cart'))
+    if(cart[id].count!=0) {
+        cart[id].count = (cart[id].count) - 1
+        console.log(`here is the count ${id}`, cart[id].count)
+        sessionStorage.setItem('cart', JSON.stringify(cart))
+        cartupdata()
+        if(cart[id].count==0){
+            startButton(id)
+        }
+    }
+}
+
+startButton=(id)=>{
+    cart=JSON.parse(sessionStorage.getItem('cart'))
+    delete cart[id]
+    sessionStorage.setItem('cart',JSON.stringify(cart))
+    document.getElementById(`span${id.toString()}`).innerHTML=`<button id=${id} class="btn-class-addtocart">AddToCart</button>`
+}
+
+fun=()=>{
+    console.log('clicked')
+}
 
